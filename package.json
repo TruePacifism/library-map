@@ -1,5 +1,6 @@
 {
   "name": "library-map",
+  "homepage": "https://truepacifism.github.io/library-map",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
