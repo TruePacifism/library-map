@@ -1,4 +1,3 @@
-import { YMaps } from "@pbe/react-yandex-maps";
 import "./App.css";
 import MyMap from "./Map/Map";
 

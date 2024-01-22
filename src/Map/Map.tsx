@@ -7,22 +7,15 @@ import React, {
   useState,
 } from "react";
 import styles from "./Map.module.css";
-import {
-  Circle,
-  Map,
-  Placemark,
-  Rectangle,
-  YMaps,
-} from "@pbe/react-yandex-maps";
-import { JsxElement } from "typescript";
+import { Map, Placemark, YMaps } from "@pbe/react-yandex-maps";
 import photo1 from "../images/Рисунок1.jpg";
 
-type bookInfo = {
-  name: string;
-  genres: string[];
-  sbornik: string;
-  year: number;
-};
+// type bookInfo = {
+//   name: string;
+//   genres: string[];
+//   sbornik: string;
+//   year: number;
+// };
 
 type writerInfo = {
   name: string;
