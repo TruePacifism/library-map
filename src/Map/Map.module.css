@@ -1,0 +1,17 @@
+.map {
+  width: 100vw;
+  height: 100dvh;
+}
+.popup {
+  pointer-events: none;
+  max-width: 50%;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+.popupPhoto {
+  width: 100px;
+}
