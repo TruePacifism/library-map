@@ -1,0 +1,11 @@
+.list {
+  padding: 20px;
+  width: 35%;
+  background-color: #f7e7ce;
+  border: 3px solid black;
+  border-radius: 5px;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-color: var(--accent-color);
+}

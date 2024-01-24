@@ -8,81 +8,16 @@ import React, {
 } from "react";
 import styles from "./Map.module.css";
 import { Map, Placemark, YMaps } from "@pbe/react-yandex-maps";
-import photo1 from "../images/Рисунок1.jpg";
-
-// type bookInfo = {
-//   name: string;
-//   genres: string[];
-//   sbornik: string;
-//   year: number;
-// };
-
-type writerInfo = {
-  name: string;
-  photo: string;
-  birthDate: {
-    day: number;
-    month: string;
-    year: number;
-  };
-  deathDate: {
-    day: number;
-    month: string;
-    year: number;
-  };
-  birthCity: string;
-  deathCity: string;
-  genres: string[];
-  bio: string;
-  coordinates: [number, number];
-};
-
-const writers: writerInfo[] = [
-  {
-    name: "Борис Васильев",
-    photo: photo1,
-    birthDate: {
-      day: 21,
-      month: "мая",
-      year: 1924,
-    },
-    deathDate: {
-      day: 11,
-      month: "марта",
-      year: 2013,
-    },
-    birthCity: "Смоленск",
-    deathCity: "Москва",
-    genres: ["Повесть", "Сценарий", "Исторический роман"],
-    bio: `С началом Великой Отечественной войны Борис Васильев ушёл на фронт добровольцем в составе истребительного комсомольского батальона, 3 июля 1941 года батальон направлен под Смоленск, где попал в окружение. Васильев самостоятельно вышел из окружения в начале октября 1941 года. Получил направление в полковую кавалерийскую школу, а затем — в пулемётную школу, после окончания которой служил в 8-м гвардейском воздушно-десантном полку 3-й гвардейской воздушно-десантной дивизии. Во время воздушного десанта под Вязьмой 16 марта 1943 года он попал на минную растяжку и с тяжёлой контузией был доставлен в госпиталь[7]. После этого ранения и его излечения, Васильев осенью 1943 года направлен на учёбу в Военную академию бронетанковых и механизированных войск имени И. В. Сталина. 
-В 1946 году окончил инженерный факультет академии, работал испытателем колёсных и гусеничных машин на Урале. Уволен в запас из рядов ВС Союза ССР в 1954 году в воинском звании капитан-инженер
-`,
-    coordinates: [42.751574, 66.573853],
-  },
-  {
-    name: "Борис Васильев",
-    photo: photo1,
-    birthDate: {
-      day: 21,
-      month: "мая",
-      year: 1924,
-    },
-    deathDate: {
-      day: 11,
-      month: "марта",
-      year: 2013,
-    },
-    birthCity: "Смоленск",
-    deathCity: "Москва",
-    genres: ["Повесть", "сценарий", "исторический роман"],
-    bio: `С началом Великой Отечественной войны Борис Васильев ушёл на фронт добровольцем в составе истребительного комсомольского батальона, 3 июля 1941 года батальон направлен под Смоленск, где попал в окружение. Васильев самостоятельно вышел из окружения в начале октября 1941 года. Получил направление в полковую кавалерийскую школу, а затем — в пулемётную школу, после окончания которой служил в 8-м гвардейском воздушно-десантном полку 3-й гвардейской воздушно-десантной дивизии. Во время воздушного десанта под Вязьмой 16 марта 1943 года он попал на минную растяжку и с тяжёлой контузией был доставлен в госпиталь[7]. После этого ранения и его излечения, Васильев осенью 1943 года направлен на учёбу в Военную академию бронетанковых и механизированных войск имени И. В. Сталина. 
-В 1946 году окончил инженерный факультет академии, работал испытателем колёсных и гусеничных машин на Урале. Уволен в запас из рядов ВС Союза ССР в 1954 году в воинском звании капитан-инженер
-`,
-    coordinates: [55.751574, 37.573856],
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { stateType, writerInfo } from "../utils/types";
+import WritersListItem from "../WritersListItem/WritersListItem";
+import { selectWriterAction } from "../utils/store";
 
 export default function MyMap() {
+  const writers = useSelector<stateType, writerInfo[]>(
+    (store) => store.writers
+  );
+  const dispatch = useDispatch();
   const [popupX, setPopupX]: [number, Dispatch<SetStateAction<number>>] =
     useState(0);
   const [popupY, setPopupY]: [number, Dispatch<SetStateAction<number>>] =
@@ -94,18 +29,7 @@ export default function MyMap() {
   const [popupContent, setPopupContent]: [
     ReactElement,
     Dispatch<SetStateAction<ReactElement>>
-  ] = useState(
-    <div>
-      <img
-        className={styles.popupPhoto}
-        src={writers[0].photo}
-        alt={writers[0].name}
-      />
-      <h2>{writers[0].name}</h2>
-      <p>{writers[0].bio}</p>
-      <span>{`${writers[0].birthDate.day} ${writers[0].birthDate.month} ${writers[0].birthDate.year} - ${writers[0].deathDate.day} ${writers[0].deathDate.month} ${writers[0].deathDate.year}`}</span>
-    </div>
-  );
+  ] = useState(<WritersListItem writerInfo={writers[0]} />);
   const centerCoords = useMemo(() => [55.751574, 37.573856], []);
   const popupRef = useRef<HTMLDivElement>(null);
   return (
@@ -119,8 +43,6 @@ export default function MyMap() {
         <Map
           state={{ center: centerCoords, zoom: 3 }}
           className={styles.mapContainer}
-          width={"100%"}
-          height={"100%"}
         >
           {writers.map((writer) => (
             <Placemark
@@ -130,18 +52,7 @@ export default function MyMap() {
                   e.originalEvent.domEvent.originalEvent;
                 console.log(e);
 
-                setPopupContent(
-                  <div>
-                    <img
-                      className={styles.popupPhoto}
-                      src={writer.photo}
-                      alt={writer.name}
-                    />
-                    <h2>{writer.name}</h2>
-                    <p>{writer.bio}</p>
-                    <span>{`${writer.birthDate.day} ${writer.birthDate.month} ${writer.birthDate.year} - ${writer.deathDate.day} ${writer.deathDate.month} ${writer.deathDate.year}`}</span>
-                  </div>
-                );
+                setPopupContent(<WritersListItem writerInfo={writer} />);
                 // const popupRect = popupRef.current?.getBoundingClientRect();
                 // const popupHeight = popupRect?.height;
                 // const popupWidth = popupRect?.width;
@@ -155,6 +66,9 @@ export default function MyMap() {
               }}
               onMouseLeave={(e: any) => {
                 setIsPopupShowing(false);
+              }}
+              onClick={(e: any) => {
+                dispatch(selectWriterAction(writer));
               }}
             />
           ))}
