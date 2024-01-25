@@ -16,3 +16,9 @@
 .popupPhoto {
   width: 100px;
 }
+.placemark {
+  width: 30px;
+  stroke: var(--accent-color);
+  margin-right: 10px;
+  cursor: pointer;
+}
