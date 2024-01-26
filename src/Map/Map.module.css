@@ -3,15 +3,10 @@
   width: 60%;
   height: 100%;
 }
+.mapContainer > ymap {
+  transition: transform 1000ms ease;
+}
 .popup {
-  pointer-events: none;
-  max-width: 50%;
-  background-color: white;
-  color: black;
-  font-size: 14px;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 500ms ease-in-out;
 }
 .popupPhoto {
   width: 100px;
@@ -21,4 +16,5 @@
   stroke: var(--accent-color);
   margin-right: 10px;
   cursor: pointer;
+  z-index: 10000;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./WritersListItem.module.css";
 import { writerInfo } from "../utils/types";
-import { ReactComponent as MapPinIcon } from "../images/icons/map-pin.svg";
 
 type propsType = {
   isSelected?: boolean;
@@ -34,11 +33,11 @@ export default function WritersListItem({
         <span
           className={styles.birthTime}
         >{`${birthDate.day} ${birthDate.month} ${birthDate.year} - ${deathDate.day} ${deathDate.month} ${deathDate.year}`}</span>
-        <div className={styles.birthCityContainer}>
-          <MapPinIcon className={styles.mapIcon} />
-
-          <span className={styles.birthCity}>{birthCity}</span>
-        </div>
+        <span className={styles.birthCity}>{birthCity}</span>
+        <button className={styles.button}>
+          {/* <MapPinIcon className={styles.mapIcon} /> */}
+          <span className={styles.buttonText}>Показать на карте</span>
+        </button>
         {/* <span className={styles.genresHeading}>Жанры:</span>
         <ul className={styles.genresList}>
           {genres.map((genre) => (

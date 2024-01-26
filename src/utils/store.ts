@@ -32,7 +32,7 @@ const initialState: stateType = {
       books: [],
     },
     {
-      name: "Борис Васильев (второй)",
+      name: "Борис Васильева",
       photo: photo1,
       birthDate: {
         day: 21,
@@ -54,7 +54,7 @@ const initialState: stateType = {
       books: [],
     },
   ],
-  selectedWriterName: null,
+  selectedWriter: null,
 };
 export const selectWriterAction = createAction<
   writerInfo,
@@ -66,7 +66,7 @@ const store = configureStore({
     builder.addCase(
       selectWriterAction,
       (state, action: PayloadAction<writerInfo>) => {
-        state.selectedWriterName = action.payload.name;
+        state.selectedWriter = action.payload;
       }
     );
   }),

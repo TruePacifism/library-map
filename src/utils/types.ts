@@ -27,5 +27,5 @@ export type writerInfo = {
 };
 export type stateType = {
   writers: writerInfo[];
-  selectedWriterName: string | null;
+  selectedWriter: writerInfo | null;
 };

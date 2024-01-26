@@ -1,0 +1,25 @@
+.popup {
+  pointer-events: none;
+  max-width: 50%;
+  background-color: var(--background-color);
+  color: black;
+  font-size: 14px;
+  position: absolute;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.container {
+  font-family: "Roboto", sans-serif;
+}
+.photo {
+  width: 200px;
+}
+.name {
+  display: block;
+}
+.birthTime {
+  display: block;
+}

@@ -8,8 +8,8 @@ export default function WritersList() {
   const writers = useSelector<stateType, writerInfo[]>(
     (store) => store.writers
   );
-  const selectedWriter = useSelector<stateType, string | null>(
-    (store) => store.selectedWriterName
+  const selectedWriter = useSelector<stateType, writerInfo | null>(
+    (store) => store.selectedWriter
   );
   return (
     <ul className={styles.list}>
@@ -17,7 +17,7 @@ export default function WritersList() {
         <WritersListItem
           key={writer.name}
           writerInfo={writer}
-          isSelected={writer.name === selectedWriter}
+          isSelected={writer === selectedWriter}
         />
       ))}
     </ul>
