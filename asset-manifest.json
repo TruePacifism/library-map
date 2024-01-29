@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/library-map/static/css/main.c04a86b1.css",
-    "main.js": "/library-map/static/js/main.5c91db88.js",
+    "main.css": "/library-map/static/css/main.947ed930.css",
+    "main.js": "/library-map/static/js/main.002b2963.js",
     "static/js/787.317036ff.chunk.js": "/library-map/static/js/787.317036ff.chunk.js",
     "static/media/Борис Васильев.jpg": "/library-map/static/media/Борис Васильев.a0a7f4076e76100cded3.jpg",
+    "static/media/Рисунок3.jpg": "/library-map/static/media/Рисунок3.bc6173c37e994393750f.jpg",
+    "static/media/Рисунок2.jpg": "/library-map/static/media/Рисунок2.69731b51e284f44578cb.jpg",
     "index.html": "/library-map/index.html",
     "static/media/map-pin.svg": "/library-map/static/media/map-pin.709dc136912c52770f2aaf48f9abea7e.svg",
-    "main.c04a86b1.css.map": "/library-map/static/css/main.c04a86b1.css.map",
-    "main.5c91db88.js.map": "/library-map/static/js/main.5c91db88.js.map",
+    "main.947ed930.css.map": "/library-map/static/css/main.947ed930.css.map",
+    "main.002b2963.js.map": "/library-map/static/js/main.002b2963.js.map",
     "787.317036ff.chunk.js.map": "/library-map/static/js/787.317036ff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c04a86b1.css",
-    "static/js/main.5c91db88.js"
+    "static/css/main.947ed930.css",
+    "static/js/main.002b2963.js"
   ]
 }
