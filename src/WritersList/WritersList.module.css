@@ -6,4 +6,5 @@
   overflow: auto;
   overflow-x: hidden;
   scrollbar-color: var(--accent-color);
+  transition: height 250ms linear;
 }

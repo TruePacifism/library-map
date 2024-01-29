@@ -1,16 +1,50 @@
 .container {
+  height: auto;
+  transition: height 250ms linear;
+}
+.bio {
+  display: block;
+  height: auto;
+}
+.enter {
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+}
+
+.enterActive {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: transform 500ms, opacity 500ms;
+}
+
+.exit {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.exitActive {
+  transform: scaleY(0);
+  transform-origin: top;
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
+}
+
+.showedBio {
+  background-color: white;
+  height: auto;
+  transition: height 250ms linear;
+}
+.visiblePartContainer {
   font-family: "Roboto", sans-serif;
   width: 100%;
-  height: 200px;
-  /* background-color: var(--background-color); */
-  /* border: 3px solid var(--accent-color);
-  border-radius: 5px; */
-  overflow: hidden;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
+
 .container:not(:last-child) {
   /* margin-bottom: 10px; */
   border-bottom: 1px solid #00000050;
@@ -30,8 +64,9 @@
   margin-bottom: 5px;
 }
 .photo {
-  max-height: 100%;
+  max-height: 180px;
   border-radius: 5px;
+  align-self: flex-start;
   border: 2px solid var(--accent-color);
 }
 .mainInfoContainer {
