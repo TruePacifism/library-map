@@ -2,6 +2,9 @@
   border-radius: 5px;
   width: 60%;
   height: 100%;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 }
 .mapContainer > ymap {
   transition: transform 1000ms ease;
@@ -17,4 +20,12 @@
   margin-right: 10px;
   cursor: pointer;
   z-index: 10000;
+}
+.flag {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
 }

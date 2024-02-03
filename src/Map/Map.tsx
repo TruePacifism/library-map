@@ -7,6 +7,7 @@ import { selectWriterAction } from "../utils/store";
 import { ReactComponent as MapIcon } from "../images/icons/map-pin.svg";
 import ReactDOMServer from "react-dom/server";
 import MapPopup from "../MapPopup/MapPopup";
+import russianFlagImage from "../images/russian-flag.png";
 export default function MyMap() {
   const writers = useSelector<stateType, writerInfo[]>(
     (store) => store.writers
@@ -36,11 +37,14 @@ export default function MyMap() {
     [selectedWriterName, writers]
   );
   return (
-    <>
+    <div className={styles.mapContainer} style={{ position: "relative" }}>
       <Map
         state={{ center: centerCoords, zoom: 3 }}
-        className={styles.mapContainer}
+        options={{ minZoom: 3 }}
+        width={"100%"}
+        height={"100%"}
       >
+        <img src={russianFlagImage} className={styles.flag} alt="" />
         {writers.map((writer) => (
           <Placemark
             geometry={writer.coordinates}
@@ -76,6 +80,6 @@ export default function MyMap() {
         y={popupY}
         isShowing={isPopupShowing}
       />
-    </>
+    </div>
   );
 }

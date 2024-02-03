@@ -1,6 +1,10 @@
 .container {
   height: auto;
   transition: height 250ms linear;
+  @media screen and (max-width: 1000px) {
+    height: 100%;
+    margin-right: 15px;
+  }
 }
 .bio {
   display: block;
@@ -43,6 +47,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  @media screen and (max-width: 1000px) {
+    height: 100%;
+  }
 }
 
 .container:not(:last-child) {
@@ -64,6 +71,11 @@
   margin-bottom: 5px;
 }
 .photo {
+  display: block;
+  @media screen and (max-width: 1000px) {
+    margin: auto;
+  }
+
   max-height: 180px;
   border-radius: 5px;
   align-self: flex-start;
