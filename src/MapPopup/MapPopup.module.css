@@ -6,10 +6,27 @@
   font-size: 14px;
   position: absolute;
   border-radius: inherit;
-  opacity: 0;
-  transition: opacity 500ms ease-in-out;
   border-radius: 5px;
   overflow: hidden;
+  opacity: 1;
+  z-index: 10;
+}
+.popupEnter {
+  opacity: 0;
+}
+
+.popupEnterActive {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.popupExit {
+  opacity: 1;
+}
+
+.popupExitActive {
+  opacity: 0;
+  transition: opacity 500ms;
 }
 .container {
   font-family: "Roboto", sans-serif;

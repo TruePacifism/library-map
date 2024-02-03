@@ -12,14 +12,16 @@ export default function WritersList() {
     (store) => store.selectedWriter
   );
   return (
-    <ul className={styles.list}>
-      {writers.map((writer) => (
-        <WritersListItem
-          key={writer.name}
-          writerInfo={writer}
-          isSelected={writer === selectedWriter}
-        />
-      ))}
-    </ul>
+    <section className={styles.section}>
+      <ul className={styles.list}>
+        {writers.map((writer) => (
+          <WritersListItem
+            key={writer.name}
+            writerInfo={writer}
+            isSelected={writer === selectedWriter}
+          />
+        ))}
+      </ul>
+    </section>
   );
 }

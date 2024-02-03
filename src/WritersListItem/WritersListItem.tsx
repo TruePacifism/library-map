@@ -28,7 +28,7 @@ export default function WritersListItem({ isSelected, writerInfo }: propsType) {
           <span className={styles.birthCity}>{birthCity}</span>
           <button className={styles.button} onClick={handleShowButton}>
             {/* <MapPinIcon className={styles.mapIcon} /> */}
-            <span className={styles.buttonText}>Показать на карте</span>
+            <span className={styles.buttonText}>Вся информация</span>
           </button>
           {/* <span className={styles.genresHeading}>Жанры:</span>
         <ul className={styles.genresList}>

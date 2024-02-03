@@ -1,19 +1,16 @@
-.list {
-  width: 40%;
+.section {
+  width: 100%;
   background-color: var(--background-color);
   border: 1px solid black;
+  height: 100%;
+}
+.list {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
   scrollbar-color: var(--accent-color);
   transition: height 250ms linear;
-  @media screen and (max-width: 1000px) {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 300px;
-    height: auto;
-    overflow-x: scroll;
-  }
 }

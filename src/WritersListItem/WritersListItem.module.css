@@ -1,10 +1,6 @@
 .container {
   height: auto;
   transition: height 250ms linear;
-  @media screen and (max-width: 1000px) {
-    height: 100%;
-    margin-right: 15px;
-  }
 }
 .bio {
   display: block;
@@ -47,9 +43,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  @media screen and (max-width: 1000px) {
-    height: 100%;
-  }
 }
 
 .container:not(:last-child) {
@@ -72,17 +65,15 @@
 }
 .photo {
   display: block;
-  @media screen and (max-width: 1000px) {
-    margin: auto;
-  }
-
-  max-height: 180px;
+  height: auto;
+  width: 40%;
+  max-width: 200px;
   border-radius: 5px;
   align-self: flex-start;
   border: 2px solid var(--accent-color);
 }
 .mainInfoContainer {
-  width: 100%;
+  width: 60%;
   height: 100%;
   padding-left: 5%;
   padding-right: 5%;
