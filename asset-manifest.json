@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/library-map/static/css/main.65ed2573.css",
-    "main.js": "/library-map/static/js/main.0156b865.js",
+    "main.js": "/library-map/static/js/main.910077d5.js",
     "static/js/787.317036ff.chunk.js": "/library-map/static/js/787.317036ff.chunk.js",
     "static/media/russian-flag.png": "/library-map/static/media/russian-flag.a788411af1c6a5ed0719.png",
     "static/media/Борис Васильев.jpg": "/library-map/static/media/Борис Васильев.a0a7f4076e76100cded3.jpg",
@@ -10,11 +10,11 @@
     "index.html": "/library-map/index.html",
     "static/media/map-pin.svg": "/library-map/static/media/map-pin.709dc136912c52770f2aaf48f9abea7e.svg",
     "main.65ed2573.css.map": "/library-map/static/css/main.65ed2573.css.map",
-    "main.0156b865.js.map": "/library-map/static/js/main.0156b865.js.map",
+    "main.910077d5.js.map": "/library-map/static/js/main.910077d5.js.map",
     "787.317036ff.chunk.js.map": "/library-map/static/js/787.317036ff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65ed2573.css",
-    "static/js/main.0156b865.js"
+    "static/js/main.910077d5.js"
   ]
 }
