@@ -1,12 +1,10 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./MyPlacemark.module.css";
-import { selectWriterAction } from "../utils/store";
 import { ReactComponent as MapIcon } from "../images/icons/map-pin.svg";
 import ReactDOMServer from "react-dom/server";
 import MapPopup from "../MapPopup/MapPopup";
 import { Placemark } from "@pbe/react-yandex-maps";
-import { stateType, writerInfo } from "../utils/types";
-import { useDispatch, useSelector } from "react-redux";
+import { writerInfo } from "../utils/types";
 
 type propsType = {
   writer: writerInfo;
@@ -25,10 +23,6 @@ export default function MyPlacemark({ writer, isSelected }: propsType) {
   ] = useState(false);
   const [popupY, setPopupY]: [number, Dispatch<SetStateAction<number>>] =
     useState(0);
-  const dispatch = useDispatch();
-  const selectedWriter = useSelector<stateType, writerInfo | null>(
-    (state) => state.selectedWriter
-  );
   useEffect(() => {
     setIsShowing(isClicked);
   }, [isClicked]);
