@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./MyPlacemark.module.css";
 import { selectWriterAction } from "../utils/store";
 import { ReactComponent as MapIcon } from "../images/icons/map-pin.svg";
@@ -15,33 +15,78 @@ type propsType = {
 export default function MyPlacemark({ writer, isSelected }: propsType) {
   const [popupX, setPopupX]: [number, Dispatch<SetStateAction<number>>] =
     useState(0);
+  const [isShowing, setIsShowing]: [
+    boolean,
+    Dispatch<SetStateAction<boolean>>
+  ] = useState(false);
+  const [isClicked, setIsClicked]: [
+    boolean,
+    Dispatch<SetStateAction<boolean>>
+  ] = useState(false);
   const [popupY, setPopupY]: [number, Dispatch<SetStateAction<number>>] =
     useState(0);
   const dispatch = useDispatch();
   const selectedWriter = useSelector<stateType, writerInfo | null>(
     (state) => state.selectedWriter
   );
+  useEffect(() => {
+    setIsShowing(isClicked);
+  }, [isClicked]);
   return (
     <>
       <Placemark
         geometry={writer.coordinates}
-        onHover={() => {
-          console.log("hovered");
-        }}
-        onBaloonOpen={() => {
-          console.log("baloon");
-        }}
         onClick={(e: any) => {
-          if (selectedWriter === writer) {
-            console.log("no changes");
+          setIsClicked((oldIsShowing) => {
+            if (oldIsShowing) {
+              return false;
+            } else {
+              const event: MouseEvent | TouchEvent =
+                e.originalEvent.domEvent.originalEvent;
+              console.log(event);
+              let x: number = 0;
+              let y: number = 0;
+              if ((event as MouseEvent).x !== undefined) {
+                x = (event as MouseEvent).x;
+                y = (event as MouseEvent).y;
+              } else {
+                x = (event as TouchEvent).changedTouches[0].clientX;
+                y = (event as TouchEvent).changedTouches[0].clientY;
+              }
+              setPopupX(x);
+              setPopupY(y);
+              return true;
+            }
+          });
+          // dispatch(selectWriterAction(writer));
+        }}
+        onMouseEnter={(e: any) => {
+          if (isClicked) {
             return;
           }
-          const event: MouseEvent = e.originalEvent.domEvent.originalEvent;
-          const x: number = event.clientX - 20;
-          const y: number = event.clientY - 20;
-          setPopupX(x);
-          setPopupY(y);
-          dispatch(selectWriterAction(writer));
+          setIsShowing((oldIsShowing) => {
+            const event: MouseEvent = e.originalEvent.domEvent.originalEvent;
+            console.log(event);
+            let x: number = 0;
+            let y: number = 0;
+            if ((event as MouseEvent).x !== undefined) {
+              x = (event as MouseEvent).x;
+              y = (event as MouseEvent).y;
+            }
+            setPopupX(x);
+            setPopupY(y);
+            return true;
+          });
+          // dispatch(selectWriterAction(writer));
+        }}
+        onMouseLeave={(e: any) => {
+          if (isClicked) {
+            return;
+          }
+          setIsShowing((oldIsShowing) => {
+            return false;
+          });
+          // dispatch(selectWriterAction(writer));
         }}
         options={{
           iconColor: "#FF00FF",
@@ -52,7 +97,7 @@ export default function MyPlacemark({ writer, isSelected }: propsType) {
           },
         }}
       />
-      <MapPopup writer={writer} x={popupX} y={popupY} isShowing={isSelected} />
+      <MapPopup writer={writer} x={popupX} y={popupY} isShowing={isShowing} />
     </>
   );
 }

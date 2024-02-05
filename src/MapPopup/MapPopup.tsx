@@ -45,15 +45,15 @@ export default function MapPopup({
       <div
         className={styles.popup}
         style={{
-          top:
-            y - popupRef.current?.getBoundingClientRect().height! < 52
-              ? 52
-              : y - popupRef.current?.getBoundingClientRect().height!,
-          left:
-            x - popupRef.current?.getBoundingClientRect().width! <
-            (window.innerWidth / 100) * 40
-              ? (window.innerWidth / 100) * 40
-              : x - popupRef.current?.getBoundingClientRect().width!,
+          top: y,
+          // y - popupRef.current?.getBoundingClientRect().height! < 52
+          //   ? 52
+          //   : y - popupRef.current?.getBoundingClientRect().height!,
+          left: x,
+          // x - popupRef.current?.getBoundingClientRect().width! <
+          // (window.innerWidth / 100) * 40
+          //   ? (window.innerWidth / 100) * 40
+          //   : x - popupRef.current?.getBoundingClientRect().width!,
         }}
         ref={popupRef}
       >
