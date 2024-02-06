@@ -5,6 +5,8 @@ import ReactDOMServer from "react-dom/server";
 import MapPopup from "../MapPopup/MapPopup";
 import { Placemark } from "@pbe/react-yandex-maps";
 import { writerInfo } from "../utils/types";
+import { useDispatch } from "react-redux";
+import { selectWriterAction } from "../utils/store";
 
 type propsType = {
   writer: writerInfo;
@@ -17,55 +19,78 @@ export default function MyPlacemark({ writer, isSelected }: propsType) {
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState(false);
-  const [isClicked, setIsClicked]: [
-    boolean,
-    Dispatch<SetStateAction<boolean>>
-  ] = useState(false);
   const [popupY, setPopupY]: [number, Dispatch<SetStateAction<number>>] =
     useState(0);
   useEffect(() => {
-    setIsShowing(isClicked);
-  }, [isClicked]);
+    setIsShowing(isSelected);
+  }, [isSelected]);
+  const dispatch = useDispatch();
   return (
     <>
       <Placemark
-        geometry={writer.coordinates}
-        onClick={(e: any) => {
-          setIsClicked((oldIsShowing) => {
-            if (oldIsShowing) {
-              return false;
-            } else {
-              const event: MouseEvent | TouchEvent =
-                e.originalEvent.domEvent.originalEvent;
-              console.log(event);
-              let x: number = 0;
-              let y: number = 0;
-              if ((event as MouseEvent).x !== undefined) {
-                x = (event as MouseEvent).x;
-                y = (event as MouseEvent).y;
-              } else {
-                x = (event as TouchEvent).changedTouches[0].clientX;
-                y = (event as TouchEvent).changedTouches[0].clientY;
-              }
-              setPopupX(x);
-              setPopupY(y);
-              return true;
-            }
-          });
-          // dispatch(selectWriterAction(writer));
+        properties={{
+          baloonContent: "<p>DASDASFASDASD</p>",
         }}
+        onHintOpen={(e: any) => {
+          console.log();
+        }}
+        instanceRef={(e) => {
+          console.log(e);
+
+          // console.log(
+          //   e?.balloon?.open(
+          //     [10, 10],
+          //     <p style={{ backgroundColor: "blue", width: 100, height: 100 }}>
+          //       ddasdasd
+          //     </p>
+          //   )
+          // );
+          // e?.balloon?.setData(
+          //   <p style={{ backgroundColor: "blue", width: 100, height: 100 }}>
+          //     ddasdasd
+          //   </p>
+          // );
+          // console.log(e?.balloon?.getPosition());
+          // console.log(e?.balloon?.getData());
+        }}
+        geometry={writer.coordinates}
+        // onClick={(e: any) => {
+        //   setIsShowing((oldIsShowing) => {
+        //     if (oldIsShowing) {
+        //       return false;
+        //     } else {
+        //       const event: MouseEvent | TouchEvent =
+        //         e.originalEvent.domEvent.originalEvent;
+        //       console.log(event);
+        //       let x: number = 0;
+        //       let y: number = 0;
+        //       if ((event as MouseEvent).x !== undefined) {
+        //         x = (event as MouseEvent).x;
+        //         y = (event as MouseEvent).y;
+        //       } else {
+        //         x = (event as TouchEvent).changedTouches[0].clientX;
+        //         y = (event as TouchEvent).changedTouches[0].clientY;
+        //       }
+        //       return true;
+        //     }
+        //   });
+        // }}
         onMouseEnter={(e: any) => {
-          if (isClicked) {
+          if (isSelected) {
             return;
           }
           setIsShowing((oldIsShowing) => {
-            const event: MouseEvent = e.originalEvent.domEvent.originalEvent;
+            const event: MouseEvent | TouchEvent =
+              e.originalEvent.domEvent.originalEvent;
             console.log(event);
             let x: number = 0;
             let y: number = 0;
             if ((event as MouseEvent).x !== undefined) {
               x = (event as MouseEvent).x;
               y = (event as MouseEvent).y;
+            } else {
+              x = (event as TouchEvent).changedTouches[0].clientX;
+              y = (event as TouchEvent).changedTouches[0].clientY;
             }
             setPopupX(x);
             setPopupY(y);
@@ -74,7 +99,7 @@ export default function MyPlacemark({ writer, isSelected }: propsType) {
           // dispatch(selectWriterAction(writer));
         }}
         onMouseLeave={(e: any) => {
-          if (isClicked) {
+          if (isSelected) {
             return;
           }
           setIsShowing((oldIsShowing) => {

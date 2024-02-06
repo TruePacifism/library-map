@@ -1,7 +1,5 @@
 export type bookInfo = {
   name: string;
-  genres: string[];
-  sbornik: string;
   year: number;
 };
 

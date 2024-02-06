@@ -59,10 +59,13 @@ export default function MapPopup({
       >
         <div className={styles.container}>
           <img className={styles.photo} src={photo} alt="" />
-          <span className={styles.name}>{name}</span>
-          <span
-            className={styles.birthTime}
-          >{`${birthDate.day} ${birthDate.month} ${birthDate.year} - ${deathDate.day} ${deathDate.month} ${deathDate.year}`}</span>
+          <div className={styles.infoContainer}>
+            <span className={styles.name}>{name}</span>
+            <span
+              className={styles.birthTime}
+            >{`${birthDate.day} ${birthDate.month} ${birthDate.year} - ${deathDate.day} ${deathDate.month} ${deathDate.year}`}</span>
+            <span className={styles.birthcity}>{birthCity}</span>
+          </div>
         </div>
       </div>
     </CSSTransition>

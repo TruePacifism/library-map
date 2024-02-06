@@ -30,13 +30,25 @@
 }
 .container {
   font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
 }
 .photo {
-  width: 200px;
+  height: 200px;
 }
 .name {
   display: block;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 .birthTime {
   display: block;
+  margin-bottom: 5px;
+}
+.infoContainer {
+  padding-right: 10px;
+  padding-left: 10px;
 }

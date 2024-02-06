@@ -1,6 +1,7 @@
 .container {
   height: auto;
   transition: height 250ms linear;
+  padding: 10px;
 }
 .bio {
   display: block;
@@ -38,7 +39,6 @@
 .visiblePartContainer {
   font-family: "Roboto", sans-serif;
   width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,8 +66,8 @@
 .photo {
   display: block;
   height: auto;
-  width: 40%;
-  max-width: 200px;
+  width: auto;
+  height: 250px;
   border-radius: 5px;
   align-self: flex-start;
   border: 2px solid var(--accent-color);

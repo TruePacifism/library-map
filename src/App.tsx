@@ -4,6 +4,8 @@ import MyMap from "./Map/Map";
 import WritersList from "./WritersList/WritersList";
 import { Dispatch, SetStateAction, useState } from "react";
 import russianFlagImage from "./images/russian-flag.png";
+import { ReactComponent as ListIcon } from "./images/list-icon.svg";
+import { ReactComponent as MapIcon } from "./images/map-icon.svg";
 
 type showingModeType = "map" | "list";
 
@@ -11,7 +13,7 @@ function App() {
   const [showingMode, setShowingMode]: [
     showingModeType,
     Dispatch<SetStateAction<showingModeType>>
-  ] = useState("list" as showingModeType);
+  ] = useState("map" as showingModeType);
   return (
     <YMaps
       query={{
@@ -49,21 +51,36 @@ function App() {
                 return <MyMap />;
             }
           })()} */}
-          <div
-            className={styles.switcher}
-            onClick={() => {
-              setShowingMode((oldShowingMode) => {
-                switch (oldShowingMode) {
-                  case "list":
-                    return "map";
-                  case "map":
-                    return "list";
-                  default:
-                    return "list";
-                }
-              });
-            }}
-          ></div>
+          <div className={styles.switcherContainer}>
+            <ListIcon
+              className={styles.switcher}
+              style={{
+                opacity: showingMode === "list" ? 1 : 0,
+                pointerEvents: showingMode !== "list" ? "none" : "all",
+              }}
+              onClick={(e) => {
+                e.currentTarget.style.opacity = "0";
+                const timeout = setTimeout(() => {
+                  setShowingMode("map");
+                  clearTimeout(timeout);
+                }, 250);
+              }}
+            />
+            <MapIcon
+              className={styles.switcher}
+              style={{
+                opacity: showingMode === "map" ? 1 : 0,
+                pointerEvents: showingMode !== "map" ? "none" : "all",
+              }}
+              onClick={(e) => {
+                e.currentTarget.style.opacity = "0";
+                const timeout = setTimeout(() => {
+                  setShowingMode("list");
+                  clearTimeout(timeout);
+                }, 250);
+              }}
+            />
+          </div>
         </main>
       </div>
     </YMaps>
